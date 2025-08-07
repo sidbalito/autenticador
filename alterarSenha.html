@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Senha</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #5b9bd5;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            background-color: #5b9bd5;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-submit:hover {
+            background-color: #4a8fd4;
+        }
+        .link-back {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .link-back a {
+            color: #5b9bd5;
+            text-decoration: none;
+        }
+        .link-back a:hover {
+            text-decoration: underline;
+        }
+		#estado{
+            text-align: center;
+		  color: red;
+		}
+</style>
+<script>
+  
+  let email = localStorage.getItem("sessão")
+ 
+  if(!email) location.href="./autenticar.html"
+  
+  function alterarSenha(e){
+    e.preventDefault()
+	estado.innerText = ""
+	if(novaSenha.value == confirmarSenha.value){
+	  registro = localStorage.getItem(email)
+	  registro = JSON.parse(registro)
+	  if(registro.senha == senhaAtual.value){
+	    registro.senha = novaSenha.value
+		localStorage.setItem(email, JSON.stringify(registro))
+	  } else
+	    estado.innerText = "Senha atual inválida"
+	} else {
+	  estado.innerText = "A confirmação deve ser igual a senha"
+	}
+  }
+</script>
+  </head>
+  <body>
+
+	<div class="container">
+	  <h2>Alterar Senha</h2>
+	  <form onsubmit="alterarSenha(event)">
+        <div class="input-group">
+		  <label for="senhaAtual">Senha Atual</label>
+		  <input type="password" id="senhaAtual" name="senha-atual" required>
+        </div>
+
+        <div class="input-group">
+		  <label for="novaSenha">Nova Senha</label>
+		  <input type="password" id="novaSenha" name="nova-senha" required>
+        </div>
+
+        <div class="input-group">
+		  <label for="confirmarSenha">Confirmar Nova Senha</label>
+		  <input type="password" id="confirmarSenha" name="confirmar-nova-senha" required>
+        </div>
+		<div id="estado"></div>
+
+        <button type="submit" class="btn-submit">Alterar Senha</button>
+	  </form>
+
+	  <div class="link-back">
+        <p><a href="./perfil.html">Voltar para o perfil</a></p>
+	  </div>
+	</div>
+
+  </body>
+</html>
+
