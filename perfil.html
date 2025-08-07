@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        /* Header */
+        .header {
+            background-color: #5b9bd5;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #4a8fd4;
+        }
+        .header .user-info {
+            font-size: 18px;
+        }
+        .header .user-info span {
+            font-weight: bold;
+        }
+        
+        /* Menu hambúrguer */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+        }
+        .menu-icon div {
+            background-color: white;
+            height: 4px;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        /* Menu */
+        .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Menu lateral (invisível inicialmente) */
+        .menu-lateral {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #5b9bd5;
+            width: 200px;
+            height: 100vh;
+            padding: 30px;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .menu-lateral a {
+            display: block;
+            margin-bottom: 20px;
+        }
+        .menu-lateral .close-menu {
+		    position: absolute;
+			right: 10px;
+			top: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            background-color: #4a8fd4;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+		#estado{
+            text-align: center;
+		  color: red;
+		}
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+
+            .menu-lateral.active {
+                display: block;
+            }
+        }
+</style>
+  </head>
+  <body>
+
+	<!-- Header de Perfil -->
+	<div class="header">
+	  <div class="user-info">
+        <p>Bem-vindo, <span id="nome">{Nome Completo}</span>!</p>
+	  </div>
+
+	  <!-- Menu hambúrguer -->
+	  <div class="menu-icon" id="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+	  </div>
+
+	  <!-- Menu principal (desktop) -->
+	  <div class="menu">
+        <a href="./alterarSenha.html">Alterar Senha</a>
+		<a href="./excluirConta.html">Excluir conta</a>
+        <a onclick="desconectar(event)">Desconectar</a>
+	  </div>
+	</div>
+
+	<!-- Menu lateral (mobile) -->
+	<div class="menu-lateral" id="menu-lateral">
+	  <!-- Link para fechar o menu -->
+	  <div href="javascript:void(0)" class="close-menu" id="close-menu">X</div>
+	  <a href="./alterarSenha.html">Alterar Senha</a>
+	  <a href="./excluirConta.html">Excluir conta</a>
+	  <a onclick="desconectar(event)">Desconectar</a>
+	</div>
+
+	<!-- Conteúdo principal -->
+	<div class="content">
+	  <h1>Bem-vindo ao seu perfil, <usuario id="usuário">{Nome}</usuario></h1>
+	  <p>Aqui você pode atualizar seus dados, visualizar seu histórico ou sair da sua conta.</p>
+	  <div id="estado"></div>
+	</div>
+
+<script>
+  
+  let email = localStorage.getItem("sessão")
+   
+  if(!email) location.href="./autenticar.html"
+  let registro = localStorage.getItem(email)
+  //estado.innerText = registro.nome
+  if(registro){
+    registro = JSON.parse(registro)
+	nome.innerText = registro.nome
+	usuário.innerText = registro.nome.split(' ')[0]
+  }
+  
+  function desconectar(e){
+    localStorage.removeItem("sessão")
+	location.href="./autenticar.html"
+  }
+  
+    // Script para controlar a abertura e fechamento do menu hambúrguer
+    const menuIcon = document.getElementById('menu-icon');
+    const menuLateral = document.getElementById('menu-lateral');
+    const closeMenu = document.getElementById('close-menu');
+
+    // Mostrar menu
+    menuIcon.addEventListener('click', () => {
+        menuLateral.classList.toggle('active');
+    });
+
+    // Fechar menu
+    closeMenu.addEventListener('click', () => {
+        menuLateral.classList.remove('active');
+    });
+</script>
+
+  </body>
+</html>
+

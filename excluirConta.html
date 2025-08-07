@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Conta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .back-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+		.success-message {
+            display: none;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .error-message {
+            display: none;
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 4px;
+        }
+		span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Excluir Conta</h2>
+    <form id="delete-form">
+	  <label for="campoSenhaenha">Insira a senha de <span id="nome">{nome}</span> para confirmar:</label>
+        <input type="password" id="campoSenha" required>
+
+        <button type="submit" class="btn">Excluir Conta</button>
+    </form>
+
+    <div class="back-link">
+        <a href="./perfil.html">Voltar para o seu Perfil</a>
+    </div>
+	
+    <!-- Mensagens de sucesso ou erro -->
+    <div id="mensagemSucesso" class="success-message">Sua conta foi excluída com sucesso!</div>
+    <div id="mensagemErro" class="error-message">Por favor, insira sua senha corretamente.</div>
+</div>
+
+<script>
+  
+  let email = localStorage.getItem("sessão")
+	  registro = localStorage.getItem(email)
+	  registro = JSON.parse(registro)
+  
+  nome.innerText = registro.nome
+    document.getElementById('delete-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var senha = campoSenha.value;
+
+        mensagemSucesso.style.display = 'none';
+        mensagemErro.style.display = 'none';
+
+        // Simulando validação de senha e exclusão
+        if(campoSenha.value == registro.senha) {
+		  localStorage.removeItem(email)
+		  localStorage.removeItem("sessão")
+            // Exibe mensagem de sucesso e redireciona após 3 segundos
+            mensagemSucesso.style.display = 'block';
+            setTimeout(function() {
+                window.location.href = "./autenticar.html";
+            }, 3000); // Redireciona após 3 segundos
+        } else {
+            // Exibe mensagem de erro se a senha não foi preenchida
+            mensagemErro.style.display = 'block';
+        }/**/
+    });
+</script>
+
+</body>
+</html>
+
