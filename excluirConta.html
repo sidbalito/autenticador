@@ -3,86 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="estilo.css" rel="stylesheet"/>
     <title>Excluir Conta</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        .btn {
-            background-color: #e74c3c;
-            color: white;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #c0392b;
-        }
-        .back-link {
-            text-align: center;
-            margin-top: 15px;
-        }
-        .back-link a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .back-link a:hover {
-            text-decoration: underline;
-        }
-		.success-message {
-            display: none;
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            margin-top: 20px;
-            text-align: center;
-            border-radius: 4px;
-        }
-        .error-message {
-            display: none;
-            background-color: #dc3545;
-            color: white;
-            padding: 10px;
-            margin-top: 20px;
-            text-align: center;
-            border-radius: 4px;
-        }
-		span {
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
 
@@ -92,7 +14,7 @@
 	  <label for="campoSenhaenha">Insira a senha de <span id="nome">{nome}</span> para confirmar:</label>
         <input type="password" id="campoSenha" required>
 
-        <button type="submit" class="btn">Excluir Conta</button>
+        <button type="submit" class="botão-vermelho">Excluir Conta</button>
     </form>
 
     <div class="back-link">
@@ -100,8 +22,8 @@
     </div>
 	
     <!-- Mensagens de sucesso ou erro -->
-    <div id="mensagemSucesso" class="success-message">Sua conta foi excluída com sucesso!</div>
-    <div id="mensagemErro" class="error-message">Por favor, insira sua senha corretamente.</div>
+    <div id="mensagemSucesso">Sua conta foi excluída com sucesso!</div>
+    <div id="mensagemErro">Por favor, insira sua senha corretamente.</div>
 </div>
 
 <script>

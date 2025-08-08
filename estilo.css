@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: #5b9bd5;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #4a8fd4;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5b9bd5;
+}
+
+.link-back, .link-register,
+.back-link, .link-login{
+    text-align: center;
+    margin-top: 15px;
+}
+
+input {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5b9bd5;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botão-vermelho {
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botão-vermelho:hover {
+    background-color: #c0392b;
+}
+
+#mensagemSucesso {
+    display: none;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 4px;
+}
+#mensagemErro {
+    display: none ;
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+span {
+    font-weight: bold;
+}
