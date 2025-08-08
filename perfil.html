@@ -4,106 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
-    <!--link href="estilo.css" rel="stylesheet"/-->
-<style>
-        /* Header */
-        .header {
-            background-color: #5b9bd5;
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #4a8fd4;
-        }
-        .header .user-info {
-            font-size: 18px;
-        }
-        .header .user-info span {
-            font-weight: bold;
-        }
-        
-        /* Menu hambúrguer */
-        .menu-icon {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            width: 30px;
-            height: 25px;
-            justify-content: space-between;
-        }
-        .menu-icon div {
-            background-color: white;
-            height: 4px;
-            width: 100%;
-            border-radius: 4px;
-        }
-
-        /* Menu */
-        .menu {
-            display: flex;
-            gap: 15px;
-        }
-
-        a{
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Menu lateral (invisível inicialmente) */
-        .menu-lateral {
-            display: none;
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: #5b9bd5;
-            width: 200px;
-            height: 100vh;
-            padding: 30px;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-        .menu-lateral a {
-            display: block;
-            margin-bottom: 20px;
-        }
-        .menu-lateral .close-menu {
-		    position: absolute;
-			right: 10px;
-			top: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            background-color: #4a8fd4;
-            padding: 10px;
-            border-radius: 4px;
-            text-align: center;
-        }
-		#estado{
-            text-align: center;
-		  color: red;
-		}
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-            }
-
-            .menu-icon {
-                display: flex;
-            }
-
-            .menu-lateral.active {
-                display: block;
-            }
-        }
-</style>
+    <link href="estilo.css" rel="stylesheet"/>
   </head>
   <body>
 
@@ -141,14 +42,13 @@
 	<div class="content">
 	  <h1>Bem-vindo ao seu perfil, <usuario id="usuário">{Nome}</usuario></h1>
 	  <p>Aqui você pode atualizar seus dados, visualizar seu histórico ou sair da sua conta.</p>
-	  <div id="estado"></div>
 	</div>
 
 <script>
   
   let email = localStorage.getItem("sessão")
    
-  //if(!email) location.href="./autenticar.html"
+  if(!email) location.href="./autenticar.html"
   let registro = localStorage.getItem(email)
   //estado.innerText = registro.nome
   if(registro){
